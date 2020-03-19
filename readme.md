@@ -1,9 +1,8 @@
 ### This is a walkthrough step-by-step guide to implement redux in your react.js projects
 First we will do the file's structure.
 After installing 
-   ``` react-redux
-       redux
-       redux-thunk 
+   ``` 
+   npm i react-redux ; npm i redux ; npm i redux-thunk 
    ```
 In your react root project folder go to /src
 You can connect your providers in App.js or Index.js, i will do here do it in Index.js
