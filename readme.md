@@ -1,9 +1,13 @@
 ### This is a walkthrough step-by-step guide to implement redux in your react.js projects
-First we will do the file's structure.
+
+## Step: 1
 After installing 
    ``` 
    npm i react-redux ; npm i redux ; npm i redux-thunk 
    ```
+
+## Step: 2
+We will do the file's structure.
 In your react root project folder go to /src
 You can connect your providers in App.js or Index.js, i will do here do it in Index.js
 ```
@@ -71,6 +75,7 @@ export default function(state = initialState, action) {
   }
 }
 ```
+## Step: 3
 cd out into `./src` and create these file's structure `actions/types.js`
 
 this file will hold your types for actions reducers such as
@@ -96,7 +101,7 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 ```
-
+## Step: 4
 Everything is now pretty much setup, now how will we use this in our components.
 Whenever we want to use it we require _connect_ from _react-redux_ and the actions we want to use in our componets e.g.
 ```
