@@ -1,7 +1,7 @@
 ### This is a walkthrough step-by-step guide to implement redux in your react.js projects
 
 ## Step: 1
-After installing 
+To implement redux in react.js you will require following dependencies
    ``` 
    npm i react-redux ; npm i redux ; npm i redux-thunk 
    ```
