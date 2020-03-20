@@ -1,15 +1,21 @@
 ### This is a walkthrough step-by-step guide to implement redux in your react.js projects
 
-## Step: 1
-To implement redux in react.js you will require following dependencies
+### Table of contents:
+1. [Step 1]()
+2. [Step 2]()
+3. [Step 3]()
+4. [Step 4]()
+
+### Install Redux libraries
+To use redux in react.js you will require following dependencies, run the following command in your terminal
    ``` 
-   npm i react-redux ; npm i redux ; npm i redux-thunk 
+  $ npm i react-redux ; npm i redux ; npm i redux-thunk 
    ```
 
-## Step: 2
-We will do the file's structure.
-In your react root project folder go to /src
-You can connect your providers in App.js or Index.js, i will do here do it in Index.js
+### Making the file structure
+In your root project folder go to `/src`, here you have to use `<Provider>` to wrap your project.
+You can either write it in **App.js** _or_ **Index.js**, i'm going to do it in `Index.js`
+
 ```
 import { Provider } from "react-redux";
 import store from "./store";
@@ -21,7 +27,9 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
-Now, Create a file name `store.js` and copy/paste the following code
+Provider requires a **store** which we will create in a moment.
+
+Create a file **store.js** in the same directory and copy/paste the following code
 
 ```
 import { createStore, applyMiddleware, compose } from "redux";
@@ -36,14 +44,14 @@ const store = createStore(
   initialState,
   compose(
     applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
+    // This is the redux dev extension which you have to add in your browser, either Chrome or Firefox
   )
 );
 
 export default store;
 ```
-Create a directory `reducers` and in it create `index.js`
-Copy/paste the following code in `reducers/index.js`
+Now we will create reducers as our store requires it. Create a new directory **reducers** and in it create **index.js**. Copy/paste the following code in `reducers/index.js`
 ```
 import { combineReducers } from "redux";
 import yourReducerName from "./YourReducerFile";
@@ -52,10 +60,11 @@ export default combineReducers({
   reducerName: yourReducerName
 });
 ```
-Following is the code for your custom reducer files which you will place in `reducers/YourReducerFile`
+You have to add reducers here which you will create later on in future. Add any of those reducers in the same **reducers** directory.
 
+Following is the _example code_ for your custom reducer files.
 ```
-import { SET_CURRENT_USER } from "../actions/types";
+import { SET_CURRENT_USER } from "../actions/types"; // Reducers requires action types for switch cases
 import isEmpty from "../validation/is-empty";
 
 const initialState = {
@@ -75,15 +84,15 @@ export default function(state = initialState, action) {
   }
 }
 ```
-## Step: 3
-cd out into `./src` and create these file's structure `actions/types.js`
 
-this file will hold your types for actions reducers such as
+cd out into **./src** and create an **actions** folder and in it place **types.js** e.g `./src/actions/types.js`. 
+
+This file will hold your types for actions reducers such as, 
 ` export const GET_ERRORS = "GET_ERRORS"; `
-in the same folder you can create any of your actions file e.g 
-`authAction.js` which will hold the following
+
+In the same folder you can create any of your actions file e.g `./src/actions/authAction.js`, following is an example actions file
 ```
-import axios from "axios";
+import axios from "axios"; // Library for fetching api
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -101,26 +110,28 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 ```
-## Step: 4
-Everything is now pretty much setup, now how will we use this in our components.
-Whenever we want to use it we require _connect_ from _react-redux_ and the actions we want to use in our componets e.g.
+
+### Setting up the components
+Everything is now pretty much done, but now we want to use this in our components.
+For that we require __connect__ from __react-redux__ and the _actions_ we want to use in our componets e.g.
 ```
-import { addStudent } from "../../actions/studentActions"; // Action i want to use
+import { addPerson } from "../../actions/exampleActions"; // Action i want to use
 import { connect } from "react-redux";
 
 
 ....
   // This is how i can use my actions inside a component (here it is a class-based) and also pass arguments (if any)
-  this.props.addStudent(newStudent);
+  this.props.addPerson(data);
 ...
 
 const mapStateToProps = state => ({
   // these are the states which i will use from redux as props
-  student: state.student, 
+  persons: state.person, 
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { addStudent })(ComponentName);
+export default connect(mapStateToProps, { addPerson })(ComponentName);
 ```
+___
 
-That's all Folks!!!
+That is it, now you can use **Redux** in your projects :wink:
