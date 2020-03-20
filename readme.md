@@ -12,6 +12,9 @@ To use redux in react.js you will require following dependencies, run the follow
   $ npm i react-redux ; npm i redux ; npm i redux-thunk 
    ```
 
+___
+
+
 ### Making the file structure
 In your root project folder go to `/src`, here you have to use `<Provider>` to wrap your project.
 You can either write it in **App.js** _or_ **Index.js**, i'm going to do it in `Index.js`
@@ -111,7 +114,12 @@ export const registerUser = (userData, history) => dispatch => {
 
 ```
 
-### Setting up the components
+
+___
+
+
+
+### Setting up for the components
 Everything is now pretty much done, but now we want to use this in our components.
 For that we require __connect__ from __react-redux__ and the _actions_ we want to use in our componets e.g.
 ```
@@ -134,4 +142,4 @@ export default connect(mapStateToProps, { addPerson })(ComponentName);
 ```
 ___
 
-That is it, now you can use **Redux** in your projects :wink:
+That is it, now you can use **Redux** in your projects :wink: :+1:  Happy coding
