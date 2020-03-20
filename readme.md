@@ -1,10 +1,22 @@
 ### This is a walkthrough step-by-step guide to implement redux in your react.js projects
+Disclaimer: i am in any way shape or form not the maintainer for the libraries used in this, this is a basic walkthrough guide i created to provide a quick solution for everyone. Enjoy
 
 ### Table of contents:
-1. [Step 1]()
-2. [Step 2]()
-3. [Step 3]()
-4. [Step 4]()
+1. [Install Redux]()
+2. [Making the file structure]()
+3. [Setting up for the components]()
+
+# Table of Contents
+1. [Example](#example)
+2. [Example2](#example2)
+3. [Third Example](#third-example)
+4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+
+
+## Example
+## Example2
+## Third Example
+## [Fourth Example](http://www.fourthexample.com) 
 
 ### Install Redux libraries
 To use redux in react.js you will require following dependencies, run the following command in your terminal
