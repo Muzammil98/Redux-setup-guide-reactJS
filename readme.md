@@ -1,4 +1,4 @@
-## A step-by-step guide to use redux in your React.js projects
+## A step-by-step guide to use redux and redux-persist in your React.js projects
 
 Disclaimer: i am in any way shape or form not the maintainer for the libraries used in this, this is a basic walkthrough guide i created to provide a quick solution for everyone.If you have any issues, refer to the official docs for these libraries. Enjoy
 
@@ -11,7 +11,8 @@ Disclaimer: i am in any way shape or form not the maintainer for the libraries u
 ### Install Redux libraries
 To use redux in react.js, first you will require following dependencies, run the following command in your terminal
    ``` 
-  $ npm i react-redux ; npm i redux ; npm i redux-thunk 
+  $ npm i redux react-redux redux-thunk redux-persist
+  $ npm i redux-logger --save-dev (Optional)
    ```
 
 ___
@@ -23,11 +24,14 @@ You can either write it in **App.js** _or_ **Index.js**, i'm going to do it in `
 
 ```
 import { Provider } from "react-redux";
-import store from "./store";
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from "./store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate persistor={persistor}>
+     <App />
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );
@@ -40,9 +44,11 @@ Create a file **store.js** in the same directory and copy/paste the following co
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
 import thunk from "redux-thunk";
+import logger from 'redux-logger';
+import {persistStore} from 'redux-persist';
 
 const initialState = {};
-const middleware = [thunk];
+const middleware = [thunk,logger];
 
 const store = createStore(
   rootReducer,
@@ -53,17 +59,27 @@ const store = createStore(
     // This is the redux dev extension which you have to add in your browser, either Chrome or Firefox
   )
 );
+const persistor = persistStore(store);
 
-export default store;
+export default {store,persistor};
 ```
 Now we will create reducers as our store requires it. Create a new directory **reducers** and in it create **index.js**. Copy/paste the following code in `reducers/index.js`
 ```
 import { combineReducers } from "redux";
+import {persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // localstorage
+
 import yourReducerName from "./YourReducerFile";
 
-export default combineReducers({
+const persistConfig = {
+   key:'root',
+   storage,
+   whitelist:['reducerName']  // reducer which i want to persist goes here (can be more than one)
+}
+const rootReducer = combineReducers({
   reducerName: yourReducerName
 });
+export default persistReducer(persistConfig, rootReducer);
 ```
 You have to add reducers here which you will create later on in future. Add any of those reducers in the same **reducers** directory.
 
@@ -145,3 +161,5 @@ export default connect(mapStateToProps, { addPerson })(ComponentName);
 ___
 
 That is it, now you can use **Redux** in your projects :wink: :+1:  Happy coding
+
+
