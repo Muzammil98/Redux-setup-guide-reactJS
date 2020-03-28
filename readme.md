@@ -11,8 +11,8 @@ Disclaimer: i am in any way shape or form not the maintainer for the libraries u
 ### Install Redux libraries
 To use redux in react.js, first you will require following dependencies, run the following command in your terminal
    ``` 
-  $ npm i redux react-redux redux-thunk redux-persist
-  $ npm i redux-logger --save-dev (Optional)
+  $ npm i redux react-redux redux-thunk redux-persist --save
+  $ npm i redux-logger --save-dev 
    ```
 
 ___
