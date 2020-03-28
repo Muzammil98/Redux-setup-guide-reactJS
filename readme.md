@@ -19,10 +19,14 @@ ___
 
 
 ### Making the file structure
-In your root project folder go to `/src`, here you have to use `<Provider>` to wrap your project.
-You can either write it in **App.js** _or_ **Index.js**, i'm going to do it in `Index.js`
+In your project folder go to `/src` where your __Index.js__ and __App.js__ are, here you have to create some files and folders, to ease things up just run the following code in your terminal
+ ```
+$ mkdir reducers ; mkdir actions ; touch store.js ; cd reducers ; touch index.js ; cd .. ; cd actions ; touch authAction.js ; touch types.js ; cd .. 
+ ```
+ you will get something like this structure in ./src
+ ![Alt text](https://user-images.githubusercontent.com/33463845/77819324-e340d300-70fb-11ea-983b-34ea46394657.png)
 
-![Alt text](https://user-images.githubusercontent.com/33463845/77819324-e340d300-70fb-11ea-983b-34ea46394657.png)
+You can either wrap _Provider_ and _PersistGate_ in **App.js** _or_ **Index.js**, i'm going to do it in `Index.js`
 
 ```
 import { Provider } from "react-redux";
@@ -38,9 +42,8 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
-Provider requires a **store** which we will create in a moment.
 
-Create a file **store.js** in the same directory and copy/paste the following code
+Goto **store.js** in the same directory and copy/paste the following code
 
 ```
 import { createStore, applyMiddleware, compose } from "redux";
@@ -65,13 +68,13 @@ const persistor = persistStore(store);
 
 export default {store,persistor};
 ```
-Now we will create reducers as our store requires it. Create a new directory **reducers** and in it create **index.js**. Copy/paste the following code in `reducers/index.js`
+Now we will create reducers as our store requires it. Go into `reducers/index.js` and in it copy/paste the following code.
 ```
 import { combineReducers } from "redux";
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // localstorage
 
-import yourReducerName from "./YourReducerFile";
+import yourReducerName from "./YourReducerFile";  // create this file in the same directory
 
 const persistConfig = {
    key:'root',
@@ -108,7 +111,7 @@ export default function(state = initialState, action) {
 }
 ```
 
-cd out into **./src** and create an **actions** folder and in it place **types.js** e.g `./src/actions/types.js`. 
+cd out into **./src** and goto `./actions/types.js`. 
 
 This file will hold your types for actions reducers such as, 
 ` export const GET_ERRORS = "GET_ERRORS"; `
