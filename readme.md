@@ -22,7 +22,7 @@ ___
 In your root project folder go to `/src`, here you have to use `<Provider>` to wrap your project.
 You can either write it in **App.js** _or_ **Index.js**, i'm going to do it in `Index.js`
 
-![Alt text](structure.png?raw=true "Optional Title")
+![Alt text](https://user-images.githubusercontent.com/33463845/77819324-e340d300-70fb-11ea-983b-34ea46394657.png)
 
 ```
 import { Provider } from "react-redux";
