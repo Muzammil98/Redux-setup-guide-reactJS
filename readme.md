@@ -22,6 +22,8 @@ ___
 In your root project folder go to `/src`, here you have to use `<Provider>` to wrap your project.
 You can either write it in **App.js** _or_ **Index.js**, i'm going to do it in `Index.js`
 
+![Alt text](structure.png?raw=true "Optional Title")
+
 ```
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
