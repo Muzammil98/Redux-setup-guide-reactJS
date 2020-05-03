@@ -14,7 +14,7 @@ To use redux in react.js, first you will require following dependencies, run the
   $ npm i redux react-redux redux-thunk redux-persist --save
   $ npm i redux-logger --save-dev 
    ```
-
+ __You can always remove any library which you do not need by `npm uninstall <lib name>`__
 ___
 
 
