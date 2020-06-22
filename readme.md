@@ -8,7 +8,7 @@ Disclaimer: i am in any way shape or form not the maintainer for the libraries u
 3. [Setting up for the components](#setting-up-for-the-components)
 
 
-### Install Redux libraries
+## 1. Install Redux libraries
 To use redux in react.js, first you will require following dependencies, run the following command in your terminal
    ``` 
   $ npm i redux react-redux redux-thunk redux-persist --save
@@ -18,7 +18,7 @@ To use redux in react.js, first you will require following dependencies, run the
 ___
 
 
-### Making the file structure
+## 2. Making the file structure
 In your project folder go to `/src` where your __Index.js__ and __App.js__ are, here you have to create some files and folders, to ease things up just run the following code in your terminal
  ```
 $ mkdir redux ; cd redux ; mkdir reducers ; mkdir actions ; touch store.js ; cd reducers ; touch index.js ; cd .. ; cd actions ; touch authAction.js ; touch types.js ; cd .. 
@@ -147,7 +147,7 @@ ___
 
 
 
-### Setting up for the components
+## 3. Setting up for the components
 Everything is now pretty much done, but now we want to use this in our components.
 For that we require __connect__ from __react-redux__ and the _actions_ we want to use in our componets e.g.
 ```
