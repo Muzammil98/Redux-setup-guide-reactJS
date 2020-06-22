@@ -21,10 +21,10 @@ ___
 ### Making the file structure
 In your project folder go to `/src` where your __Index.js__ and __App.js__ are, here you have to create some files and folders, to ease things up just run the following code in your terminal
  ```
-$ mkdir reducers ; mkdir actions ; touch store.js ; cd reducers ; touch index.js ; cd .. ; cd actions ; touch authAction.js ; touch types.js ; cd .. 
+$ mkdir redux ; cd redux ; mkdir reducers ; mkdir actions ; touch store.js ; cd reducers ; touch index.js ; cd .. ; cd actions ; touch authAction.js ; touch types.js ; cd .. 
 
  ```
- you will get something like this structure in ./src
+ you will get something like this structure in ./src/redux
  
  ![Alt text](https://user-images.githubusercontent.com/33463845/77819324-e340d300-70fb-11ea-983b-34ea46394657.png)
 
@@ -55,16 +55,19 @@ import logger from 'redux-logger';
 import {persistStore} from 'redux-persist';
 
 const initialState = {};
-const middleware = [thunk,logger];
+const middlewares = [thunk,logger];
+
+const middleware = [
+  applyMiddleware(...middlewares),
+  ...(window.__REDUX_DEVTOOLS_EXTENSION__
+    ? [window.__REDUX_DEVTOOLS_EXTENSION__()]
+    : []),
+];
 
 const store = createStore(
   rootReducer,
   initialState,
-  compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
-    // This is the redux dev extension which you have to add in your browser, either Chrome or Firefox
-  )
+  compose(...middleware)
 );
 const persistor = persistStore(store);
 
